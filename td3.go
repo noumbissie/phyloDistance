@@ -79,12 +79,12 @@ func getsize(s string)int64{
     if err != nil {
         log.Fatal(err)
     }
-    return file_inf.Size() 
+    return (file_inf.Size())
 	
 }
 
 
-func distance(a string,b string )int64{
+func distance(a string,b string )float32{
 		
 	za_b:=getsize(CompressString(a+b))
 	za:=getsize(CompressString(a))
@@ -92,7 +92,10 @@ func distance(a string,b string )int64{
 	za_a:=getsize(CompressString(a+a))
 	zb_b:=getsize(CompressString(b+b))
 	
-	d:=(za_b/(za+zb))-(za_a/(4*za))-(zb_b/(4*zb))
+	var d float32
+	d=(float32)((za_b/(za+zb))-(za_a/(4*za))-(zb_b/(4*zb)))
+	
+	fmt.Println(d)
 	
 	return d
 }
@@ -101,7 +104,8 @@ func distance(a string,b string )int64{
 
 func main() {
 	
-	file := `NC_000964.fna`
+	file1 := `NC_000964.fna`
+	file2 := `NC_000964.fna`
     
     
 	_, err := os.Stat(file)
