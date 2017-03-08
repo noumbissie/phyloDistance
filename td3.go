@@ -18,7 +18,7 @@ var(
 )
 
 
-var tabfilename= []string{
+var tabfilename = []string{
 	"NC_000964.fna",
 	"NC_009725.fna",
 	"NC_009848.fna",
@@ -33,7 +33,7 @@ var tabfilename= []string{
 	"NC_009428.fna",
 	"NC_016114.fna",
 	"NC_012803.fna",
-	"NC_002662.fna"
+	"NC_002662.fna",
 }
 
 
@@ -122,6 +122,15 @@ func distance(a string,b string )float32{
 	return d
 }
 
+func matrix_sym(){
+	
+var(i,j int32)	
+
+
+	
+	
+}
+
 
 
 func main() {
@@ -136,11 +145,6 @@ func main() {
 		os.Exit(1)
 	}
 	
-	_, err := os.Stat(file2)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "the file %s doesn't exist! \n", file2)
-		os.Exit(1)
-	}
 	
 	
 	
@@ -151,9 +155,9 @@ func main() {
 	
 	val:=distance(str1,str2)
 	
-	fileComp:=CompressString(str)
+	//fileComp:=CompressString(str)
 	
-	fmt.Println(getsize(fileComp))
+	fmt.Println(val)
     // Done.
     fmt.Println("File compressed !")
 }
