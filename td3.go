@@ -17,6 +17,28 @@ var(
  err      error
 )
 
+
+var tabfilename= []string{
+	"NC_000964.fna",
+	"NC_009725.fna",
+	"NC_009848.fna",
+	"NC_014174.fna",
+	"NC_012472.fna",
+	"NC_003997.fna",
+	"NC_015634.fna",
+	"NC_014639.fna",
+	"NC_006322.fna",
+	"NC_000913.fna",
+	"NC_011770.fna",
+	"NC_009428.fna",
+	"NC_016114.fna",
+	"NC_012803.fna",
+	"NC_002662.fna"
+}
+
+
+
+
 func CompressString(data_s string)string{
     str:="data.gz"  
     file, _:= os.Create(str)
@@ -105,19 +127,29 @@ func distance(a string,b string )float32{
 func main() {
 	
 	file1 := `NC_000964.fna`
-	file2 := `NC_000964.fna`
+	file2 := `NC_002662.fna`
     
     
-	_, err := os.Stat(file)
+	_, err := os.Stat(file1)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "the file %s doesn't exist! \n", file)
+		fmt.Fprintf(os.Stderr, "the file %s doesn't exist! \n", file1)
+		os.Exit(1)
+	}
+	
+	_, err := os.Stat(file2)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "the file %s doesn't exist! \n", file2)
 		os.Exit(1)
 	}
 	
 	
+	
 	fmt.Println(" ...in progress ! ");
 	
-	str:=ProcessFile(file)
+	str1:=ProcessFile(file1)
+	str2:=ProcessFile(file2)
+	
+	val:=distance(str1,str2)
 	
 	fileComp:=CompressString(str)
 	
